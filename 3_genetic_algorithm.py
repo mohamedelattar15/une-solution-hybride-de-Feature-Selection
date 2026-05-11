@@ -2,12 +2,13 @@ import numpy as np
 import random
 
 class GeneticAlgorithm:
-    def __init__(self, fitness_func, n_features, population_size=30, mutation_rate=0.1, crossover_rate=0.8):
+    def __init__(self, fitness_func, n_features, population_size=30, mutation_rate=0.1, crossover_rate=0.8, n_generations=50):
         self.fitness_func = fitness_func
         self.n_features = n_features
         self.population_size = population_size
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
+        self.n_generations = n_generations
         self.history = {'best_fitness': [], 'avg_fitness': []}
         
     def init_population(self):
