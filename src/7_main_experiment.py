@@ -21,7 +21,7 @@ SimulatedAnnealing = import_module_from_file("simulated_annealing", "4_simulated
 HybridGASA = import_module_from_file("hybrid_algorithm", "5_hybrid_algorithm.py").HybridGASA
 
 class FeatureSelectionExperiment:
-    def __init__(self, output_dir='./results'):
+    def __init__(self, output_dir='../results'):
         self.output_dir = output_dir
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -74,7 +74,7 @@ class FeatureSelectionExperiment:
             
         print(f"Done! Saved detailed results to {res_file}")
 
-    def run_all_datasets(self, data_dir='./datasets', profile='medium'):
+    def run_all_datasets(self, data_dir='../datasets', profile='medium'):
         datasets = self.loader.load_all_datasets(data_dir)
         config = get_config_profile(profile)
         
@@ -100,9 +100,9 @@ class FeatureSelectionExperiment:
 
 if __name__ == '__main__':
     # Make sure datasets folder exists
-    if not os.path.exists('./datasets'):
-        os.makedirs('./datasets')
-        print("Please place wine.data, zoo.data, and krvskp.data in the ./datasets/ directory")
+    if not os.path.exists('../datasets'):
+        os.makedirs('../datasets')
+        print("Please place wine.data, zoo.data, and krvskp.data in the ../datasets/ directory")
     else:
         exp = FeatureSelectionExperiment()
         # You can pass 'quick' for a fast test run

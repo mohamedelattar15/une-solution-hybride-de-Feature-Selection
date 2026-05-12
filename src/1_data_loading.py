@@ -42,7 +42,7 @@ class DataLoader:
             'n_features': X.shape[1]
         }
 
-    def load_all_datasets(self, data_dir='./datasets'):
+    def load_all_datasets(self, data_dir='../datasets'):
         datasets = {}
         wine_path = os.path.join(data_dir, 'wine.data')
         if os.path.exists(wine_path):
