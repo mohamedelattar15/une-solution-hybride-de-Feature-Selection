@@ -21,10 +21,9 @@ SimulatedAnnealing = import_module_from_file("simulated_annealing", "4_simulated
 HybridGASA = import_module_from_file("hybrid_algorithm", "5_hybrid_algorithm.py").HybridGASA
 
 class FeatureSelectionExperiment:
-    def __init__(self, output_dir='../results'):
+    def __init__(self, output_dir='../results/ex2_hybrid'):
         self.output_dir = output_dir
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
+        os.makedirs(output_dir, exist_ok=True)
         self.results = {}
         self.loader = DataLoader()
 

@@ -88,13 +88,13 @@ def run_exercise_1():
     plt.legend()
     plt.grid(True, alpha=0.3)
     
-    # Sauvegarde du graphique
-    res_dir = '../results'
-    if not os.path.exists(res_dir): res_dir = './results'
-    if not os.path.exists(res_dir): os.makedirs(res_dir)
+    # Sauvegarde dans le sous-dossier dédié : results/ex1_ga/
+    base_dir = '../results' if os.path.exists('../results') else './results'
+    res_dir = os.path.join(base_dir, 'ex1_ga')
+    os.makedirs(res_dir, exist_ok=True)
     
-    plt.savefig(os.path.join(res_dir, 'ex1_ga_convergence.png'))
-    print(f"\n📈 Graphique de convergence sauvegardé dans {res_dir}/ex1_ga_convergence.png")
+    plt.savefig(os.path.join(res_dir, 'ga_convergence.png'))
+    print(f"\n📈 Graphique de convergence sauvegardé dans {res_dir}/ga_convergence.png")
     
     # Sauvegarde des résultats dans un fichier texte
     with open(os.path.join(res_dir, 'ex1_results.txt'), 'w') as f:

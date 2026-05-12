@@ -135,7 +135,12 @@ def run_pyfs_experiments():
     print("="*50)
     print(df.to_string(index=False))
     
-    csv_path = '../results/comparaison_ex2_ex3.csv'
+    import os
+    base_dir = '../results' if os.path.exists('../results') else './results'
+    res_dir = os.path.join(base_dir, 'ex3_pyfs')
+    os.makedirs(res_dir, exist_ok=True)
+    
+    csv_path = os.path.join(res_dir, 'comparaison_ex2_ex3.csv')
     df.to_csv(csv_path, index=False)
     print(f"\n✅ Tableau sauvegardé dans: {csv_path}")
     
@@ -159,7 +164,7 @@ def run_pyfs_experiments():
         plt.text(bar.get_x() + bar.get_width()/2.0, yval + 0.01, f"{yval:.4f}", ha='center', fontweight='bold')
         
     plt.tight_layout()
-    fig_path = '../results/comparaison_ex3_fitness.png'
+    fig_path = os.path.join(res_dir, 'comparaison_fitness.png')
     plt.savefig(fig_path, dpi=300)
     plt.close()
     print(f"✅ Graphique comparatif sauvegardé dans: {fig_path}")
@@ -178,7 +183,7 @@ def run_pyfs_experiments():
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.7)
     
-    conv_fig_path = '../results/comparaison_ex3_convergence.png'
+    conv_fig_path = os.path.join(res_dir, 'convergence.png')
     plt.savefig(conv_fig_path, dpi=300)
     plt.close()
     print(f"✅ Courbes de convergence sauvegardées dans: {conv_fig_path}")
