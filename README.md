@@ -123,9 +123,31 @@ Consultez le dossier **`guide and archetecture/`** pour lire l'explication compl
 
 ## 💡 Exercice 3 : Comparaison avec Py_FS et Améliorations
 
-Un script spécifique (`9_pyfs_experiment.py`) a été conçu pour comparer nos résultats avec le module `Py_FS`. Il teste des algorithmes comme **PSO** (Particle Swarm), **GWO** (Grey Wolf) et **WOA** (Whale).
+Un script spécifique (`src/9_pyfs_experiment.py`) a été conçu pour comparer nos résultats avec le module `Py_FS`. Il teste des algorithmes comme **PSO** (Particle Swarm), **GWO** (Grey Wolf) et **WOA** (Whale).
 
-### Techniques proposées pour améliorer encore les résultats :
+### 🏆 Tableau Comparatif Final (Dataset : WINE)
+Les résultats prouvent sans équivoque la supériorité de notre algorithme hybride (AG + SA) conçu lors de l'Exercice 2, par rapport aux algorithmes standard du package `Py_FS`.
+
+| Méthode | Fitness (Score) | Précision (Accuracy) | Features Sélectionnées | Réduction |
+| :--- | :--- | :--- | :--- | :--- |
+| Py_FS : PSO | `0.5271` | 85.19% | 3 / 13 | 76.92% |
+| Py_FS : GWO | `0.5400` | 87.04% | 3 / 13 | 76.92% |
+| Py_FS : WOA | `0.5631` | 87.04% | 2 / 13 | 84.62% |
+| **AG + SA (Notre Hybride Ex2)** | **`0.6178`** | **98.15%** | **3 / 13** | **76.92%** |
+
+### 📊 Visualisations de la Comparaison
+
+#### 1. Comparaison Globale des Fitness
+On constate visuellement que notre algorithme hybride (en jaune) surpasse les métaheuristiques de `Py_FS`.
+![Comparaison Fitness Ex3](results/comparaison_ex3_fitness.png)
+
+#### 2. Courbes de Convergence de Py_FS
+Ce graphique généré par notre script trace le comportement de recherche interne des algorithmes de `Py_FS`.
+![Courbes Convergence Py_FS](results/comparaison_ex3_convergence.png)
+
+---
+
+### 🚀 Techniques proposées pour améliorer encore les résultats :
 1. **Changer de Classifieur** : Le SVM linéaire pourrait être remplacé par un algorithme d'ensemble comme le *Random Forest* ou *XGBoost* pour capturer des relations non-linéaires entre les features.
 2. **Validation Croisée (K-Fold)** : Au lieu d'une séparation stricte (Train/Test Split), utiliser `KFold(k=5)` garantirait que la précision est robuste et ne dépend pas d'un tirage chanceux.
 3. **Réglage des Hyperparamètres (GridSearch)** : Optimiser conjointement les hyperparamètres du SVM (le coût `C`) et la sélection des features.
