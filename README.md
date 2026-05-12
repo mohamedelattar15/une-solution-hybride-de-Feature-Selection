@@ -22,11 +22,19 @@ Cet exercice utilise un **Algorithme Génétique pur** pour la sélection de car
 *   **Dataset** : `breast_dataset.csv` (30 features, 569 instances).
 *   **Objectif** : Maximiser la précision SVM en minimisant le nombre de caractéristiques sélectionnées.
 
-### 📊 Résultats (GA Seul - Breast Cancer)
-Une fois le script `src/8_ga_only_experiment.py` exécuté :
-*   **Précision** : ~97-98%
-*   **Features** : Réduction massive (souvent moins de 10 features sur 30).
-*   **Graphique** : `results/ex1_ga_convergence.png`
+### 📊 Résultats réels obtenus (GA seul - Breast Cancer)
+
+| Métrique | Valeur |
+| :--- | :--- |
+| **Fitness** | `0.6595` |
+| **Précision (Accuracy)** | **97.08%** |
+| **Features sélectionnées** | **2 / 30** |
+| **Taux de réduction** | **93.33%** |
+| **Temps d'exécution** | ~12 secondes |
+
+L'AG a éliminé **28 features sur 30** tout en conservant une précision de 97% !
+
+![Convergence GA Ex1](results/ex1_ga/ga_convergence.png)
 
 ---
 
@@ -107,14 +115,23 @@ cd src
 python test_quick.py
 ```
 
-### 2. Expérience Complète
-1. Assurez-vous de placer vos fichiers de données (`wine.data`, `zoo.data`, `krvskp.data`) dans le dossier **`datasets/`** à la racine du projet.
-2. Lancez l'expérience :
+### 2. Lancer les Expériences par Exercice
+1. Assurez-vous que le dossier **`datasets/`** contient `wine.data` et `breast_dataset.csv`.
+2. Exécutez chaque exercice séparément depuis le dossier `src/` :
+
 ```bash
 cd src
+
+# Exercice 1 : GA seul (Breast Cancer) → résultats dans results/ex1_ga/
+python 8_ga_only_experiment.py
+
+# Exercice 2 : Hybride AG+SA (Wine, Zoo, Krvskp) → résultats dans results/ex2_hybrid/
 python 7_main_experiment.py
+
+# Exercice 3 : Comparaison Py_FS → résultats dans results/ex3_pyfs/
+python 9_pyfs_experiment.py
 ```
-3. Consultez le dossier **`results/`** pour y trouver le fichier `results_summary.csv` et les graphiques de convergence (`.png`).
+3. Consultez le dossier **`results/`** pour y trouver les sous-dossiers `ex1_ga/`, `ex2_hybrid/` et `ex3_pyfs/`.
 
 ---
 
@@ -160,9 +177,9 @@ Les résultats prouvent sans équivoque la supériorité de notre algorithme hyb
 
 | Méthode | Fitness (Score) | Précision (Accuracy) | Features Sélectionnées | Réduction |
 | :--- | :--- | :--- | :--- | :--- |
-| Py_FS : PSO | `0.5271` | 85.19% | 3 / 13 | 76.92% |
-| Py_FS : GWO | `0.5400` | 87.04% | 3 / 13 | 76.92% |
-| Py_FS : WOA | `0.5631` | 87.04% | 2 / 13 | 84.62% |
+| Py_FS : PSO | `0.5631` | 87.04% | 2 / 13 | 84.62% |
+| Py_FS : GWO | `0.5660` | 90.74% | 3 / 13 | 76.92% |
+| Py_FS : WOA | `0.5761` | 88.89% | 2 / 13 | 84.62% |
 | **AG + SA (Notre Hybride Ex2)** | **`0.6178`** | **98.15%** | **3 / 13** | **76.92%** |
 
 ### 📊 Visualisations de la Comparaison
