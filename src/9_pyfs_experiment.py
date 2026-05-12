@@ -68,8 +68,21 @@ def run_pyfs_experiments():
     
     results = []
     
+    # =====================================================================
+    # ⚙️ HYPERPARAMÈTRES DES MÉTAHEURISTIQUES (Explication pour le TP)
+    # Les algorithmes de Py_FS partagent plusieurs paramètres fondamentaux :
+    # - num_agents : Taille de la population (ex: nombre de particules ou de loups).
+    #                Plus il est élevé, meilleure est l'exploration globale, 
+    #                mais le temps de calcul augmente proportionnellement.
+    # - max_iter   : Nombre de générations (itérations) avant l'arrêt.
+    # - trans_func_shape : Forme de la fonction de transfert pour la binarisation.
+    #                      Permet de convertir l'espace continu en espace binaire (Sélection de features).
+    #                      Peut être 's' (Sigmoid), 'v' (V-shaped) ou 'u' (U-shaped).
+    # =====================================================================
+
     # 1. PSO (Particle Swarm Optimization)
     print("\n[1/3] Exécution Py_FS : Particle Swarm Optimization (PSO)...")
+    # Nous utilisons trans_func_shape='s' par défaut, mais 'v' peut parfois donner de meilleurs résultats.
     sol_pso = PSO(num_agents=30, max_iter=50, train_data=X_train, train_label=y_train, save_conv_graph=False)
     acc_pso, red_pso = fitness_evaluator.get_accuracy_and_reduction(sol_pso.best_agent)
     fit_pso = fitness_evaluator.evaluate_solution(sol_pso.best_agent)
