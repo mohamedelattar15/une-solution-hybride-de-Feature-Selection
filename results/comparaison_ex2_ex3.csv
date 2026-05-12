@@ -1,0 +1,5 @@
+Méthode,Fitness,Accuracy,Features Sélectionnées,Réduction
+Py_FS : PSO,0.5271,85.19%,3 / 13,76.92%
+Py_FS : GWO,0.54,87.04%,3 / 13,76.92%
+Py_FS : WOA,0.5631,87.04%,2 / 13,84.62%
+AG + SA (Notre Hybride Ex2),0.6178,98.15%,3 / 13,76.92%

@@ -121,6 +121,31 @@ def run_pyfs_experiments():
     csv_path = '../results/comparaison_ex2_ex3.csv'
     df.to_csv(csv_path, index=False)
     print(f"\n✅ Tableau sauvegardé dans: {csv_path}")
+    
+    # Création et sauvegarde automatique du graphique comparatif
+    import matplotlib.pyplot as plt
+    
+    plt.figure(figsize=(10, 6))
+    
+    # Couleurs personnalisées (style viridis)
+    colors = ['#440154', '#3b528b', '#21918c', '#fde725']
+    bars = plt.bar(df['Méthode'], df['Fitness'], color=colors)
+    
+    plt.title('Comparaison des Algorithmes (Fitness) - WINE Dataset', fontsize=14, pad=15)
+    plt.ylabel('Score Fitness', fontsize=12)
+    plt.xlabel('Algorithmes', fontsize=12)
+    plt.ylim(0, 0.8)
+    
+    # Ajouter les valeurs au-dessus des barres
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width()/2.0, yval + 0.01, f"{yval:.4f}", ha='center', fontweight='bold')
+        
+    plt.tight_layout()
+    fig_path = '../results/comparaison_ex3_fitness.png'
+    plt.savefig(fig_path, dpi=300)
+    plt.close()
+    print(f"✅ Graphique comparatif sauvegardé dans: {fig_path}")
 
 if __name__ == "__main__":
     run_pyfs_experiments()
