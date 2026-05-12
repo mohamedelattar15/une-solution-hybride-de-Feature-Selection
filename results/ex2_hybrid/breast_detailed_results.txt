@@ -1,0 +1,7 @@
+Results for breast
+Fitness: 0.6395
+Accuracy: 0.9708
+Reduction: 86.67%
+Features selected: 4/30
+Indices: [9, 18, 20, 27]
+Time: 10.78s

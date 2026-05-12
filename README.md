@@ -41,21 +41,32 @@ Le code a été structuré pour être modulaire et professionnel :
 ```text
 une-solution-hybride-de-Feature-Selection/
 │
-├── datasets/                 # Placez ici les fichiers .data (wine.data, etc.)
-├── results/                  # Dossier de sortie pour les graphiques et CSV
-├── guide and archetecture/   # Documentation détaillée et explications du TP
+├── datasets/               # Fichiers de données (wine.data, breast_dataset.csv, etc.)
+├── guide and archetecture/ # Documentation pédagogique
 │
-└── src/                      # Code source Python (Programmation Orientée Objet)
-    ├── config.py                 # Configuration centrale (hyperparamètres)
-    ├── 1_data_loading.py         # Nettoyage et normalisation des données
-    ├── 2_fitness_function.py     # Évaluation des solutions
-    ├── 3_genetic_algorithm.py    # Algorithme Génétique
+├── results/                # 📊 Résultats séparés par exercice
+│   ├── ex1_ga/             # Exercice 1 : GA seul sur Breast Cancer
+│   │   ├── ga_convergence.png
+│   │   └── ex1_results.txt
+│   ├── ex2_hybrid/         # Exercice 2 : Hybridation AG + SA
+│   │   ├── wine_convergence.png
+│   │   ├── results_comparison.png
+│   │   └── results_summary.csv
+│   └── ex3_pyfs/           # Exercice 3 : Comparaison Py_FS
+│       ├── comparaison_fitness.png
+│       ├── convergence.png
+│       └── comparaison_ex2_ex3.csv
+│
+└── src/                    # Code source Python
+    ├── 1_data_loading.py         # Chargement et normalisation des données
+    ├── 2_fitness_function.py     # Évaluation des solutions (SVM)
+    ├── 3_genetic_algorithm.py    # Algorithme Génétique Binaire
     ├── 4_simulated_annealing.py  # Recuit Simulé
-    ├── 5_hybrid_algorithm.py     # Orchestration de l'hybridation
-    ├── 7_main_experiment.py      # Script principal pour générer les résultats
-    ├── 8_results_analysis.py     # Génération des graphiques (Matplotlib)
-    ├── requirements.txt          # Dépendances du projet
-    └── test_quick.py             # Script de test unitaire rapide
+    ├── 5_hybrid_algorithm.py     # Orchestration de l'hybridation AG+SA
+    ├── 7_main_experiment.py      # Exercice 2 : Expérience hybride
+    ├── 8_ga_only_experiment.py   # Exercice 1 : GA seul (Breast Cancer)
+    ├── 9_pyfs_experiment.py      # Exercice 3 : Comparaison Py_FS
+    └── config.py                 # Configuration centrale (hyperparamètres)
 ```
 
 ---
@@ -126,12 +137,12 @@ Le graphique ci-dessous montre la progression du score d'évaluation :
 - **À gauche** : L'Algorithme Génétique (AG) explore rapidement l'espace et trouve une bonne base.
 - **À droite** : Le Recuit Simulé (SA) prend le relais pour affiner et perfectionner la solution finale.
 
-![Convergence WINE](results/wine_convergence.png)
+![Convergence WINE](results/ex2_hybrid/wine_convergence.png)
 
 #### 2. Comparaison des performances
 Ce graphique compare la Précision et le Taux de réduction pour les différents jeux de données testés.
 
-![Comparaison globale](results/results_comparison.png)
+![Comparaison globale](results/ex2_hybrid/results_comparison.png)
 
 ---
 
@@ -158,11 +169,11 @@ Les résultats prouvent sans équivoque la supériorité de notre algorithme hyb
 
 #### 1. Comparaison Globale des Fitness
 On constate visuellement que notre algorithme hybride (en jaune) surpasse les métaheuristiques de `Py_FS`.
-![Comparaison Fitness Ex3](results/comparaison_ex3_fitness.png)
+![Comparaison Fitness Ex3](results/ex3_pyfs/comparaison_fitness.png)
 
 #### 2. Courbes de Convergence de Py_FS
 Ce graphique généré par notre script trace le comportement de recherche interne des algorithmes de `Py_FS`.
-![Courbes Convergence Py_FS](results/comparaison_ex3_convergence.png)
+![Courbes Convergence Py_FS](results/ex3_pyfs/convergence.png)
 
 ---
 

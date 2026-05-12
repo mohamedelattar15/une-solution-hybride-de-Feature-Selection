@@ -77,7 +77,14 @@ class FeatureSelectionExperiment:
         datasets = self.loader.load_all_datasets(data_dir)
         config = get_config_profile(profile)
         
+        # Exercice 2 utilise Wine, Zoo et Krvskp.
+        # Le dataset Breast Cancer est réservé à l'Exercice 1 (8_ga_only_experiment.py).
+        EX2_DATASETS = ['wine', 'zoo', 'krvskp']
+        
         for name, data in datasets.items():
+            if name not in EX2_DATASETS:
+                print(f"\n⏭️  Dataset '{name}' ignoré (réservé à un autre exercice).")
+                continue
             self.run_dataset(name, data, config)
             
     def generate_report(self):
