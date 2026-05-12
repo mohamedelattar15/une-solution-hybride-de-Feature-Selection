@@ -25,9 +25,22 @@ if 'pkg_resources' not in sys.modules:
     sys.modules['pkg_resources'] = types.ModuleType('pkg_resources')
 
 import builtins
-# Py_FS utilise la fonction 'input()' en plein milieu de son code pour demander le poids de l'Accuracy.
-# C'est une très mauvaise pratique. Nous allons forcer la réponse à '0.7' (comme notre Exercice 2).
-builtins.input = lambda prompt="": "0.7"
+def smart_input(prompt=""):
+    print(f"[Py_FS demande] {prompt}")
+    p = prompt.lower()
+    if 'weight' in p: return '0.7'
+    if 'val' in p or 'size' in p: return '0.3'
+    return '1'
+builtins.input = smart_input
+
+import sklearn.model_selection
+original_split = sklearn.model_selection.train_test_split
+def safe_split(*args, **kwargs):
+    # Forcer des paramètres sûrs pour éviter le crash interne de Py_FS
+    if 'stratify' in kwargs: del kwargs['stratify']
+    kwargs['test_size'] = 0.3
+    return original_split(*args, **kwargs)
+sklearn.model_selection.train_test_split = safe_split
 # ------------------------
 
 # Import de la librairie Py_FS
