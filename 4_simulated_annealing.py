@@ -3,12 +3,12 @@ import random
 import math
 
 class SimulatedAnnealing:
-    def __init__(self, fitness_func, n_features, initial_temp=1.0, cooling_rate=0.95, iters_per_temp=200):
+    def __init__(self, fitness_func, n_features, initial_temperature=1.0, cooling_rate=0.95, iterations_per_temperature=200):
         self.fitness_func = fitness_func
         self.n_features = n_features
-        self.initial_temp = initial_temp
+        self.initial_temperature = initial_temperature
         self.cooling_rate = cooling_rate
-        self.iters_per_temp = iters_per_temp
+        self.iterations_per_temperature = iterations_per_temperature
         self.history = {'temperature': [], 'best_fitness': [], 'acceptance_rate': []}
         
     def get_neighbor(self, solution):
@@ -29,11 +29,11 @@ class SimulatedAnnealing:
         best_solution = current_solution.copy()
         best_fitness = current_fitness
         
-        temperature = self.initial_temp
+        temperature = self.initial_temperature
         
         while temperature > 0.01:
             accepted = 0
-            for _ in range(self.iters_per_temp):
+            for _ in range(self.iterations_per_temperature):
                 neighbor = self.get_neighbor(current_solution)
                 neighbor_fitness = self.fitness_func.evaluate_solution(neighbor)
                 
@@ -52,7 +52,7 @@ class SimulatedAnnealing:
                         
             self.history['temperature'].append(temperature)
             self.history['best_fitness'].append(best_fitness)
-            self.history['acceptance_rate'].append(accepted / self.iters_per_temp)
+            self.history['acceptance_rate'].append(accepted / self.iterations_per_temperature)
             
             temperature *= self.cooling_rate
             
