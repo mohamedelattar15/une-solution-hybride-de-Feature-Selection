@@ -1,0 +1,7 @@
+EXERCICE 1 : RÉSULTATS GA SEUL (BREAST CANCER)
+========================================
+Date: 2026-05-12 10:47:29
+Précision: 96.49%
+Réduction: 93.33%
+Nombre de features: 2/30
+Temps: 11.91s

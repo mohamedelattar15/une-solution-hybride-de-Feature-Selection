@@ -11,7 +11,26 @@ Il combine la puissance d'exploration globale d'un **Algorithme Génétique (AG)
 ## 🎯 Objectifs
 - **Maximiser la précision** (Accuracy) d'un modèle de classification (SVM).
 - **Minimiser le nombre d'attributs** utilisés (Réduction dimensionnelle).
-- Les tests sont effectués sur 3 jeux de données issus de l'UCI Machine Learning Repository : **Wine**, **Zoo**, et **Krvskp**.
+- Les tests sont effectués sur des jeux de données variés : **Wine**, **Zoo**, **Krvskp** et **Breast Cancer**.
+
+---
+
+## 🧪 Exercice 1 : Algorithme Génétique Binaire (GA Seul)
+
+Cet exercice utilise un **Algorithme Génétique pur** pour la sélection de caractéristiques sur le dataset **Breast Cancer**.
+
+*   **Dataset** : `breast_dataset.csv` (30 features, 569 instances).
+*   **Objectif** : Maximiser la précision SVM en minimisant le nombre de caractéristiques sélectionnées.
+
+### 📊 Résultats (GA Seul - Breast Cancer)
+Une fois le script `src/8_ga_only_experiment.py` exécuté :
+*   **Précision** : ~97-98%
+*   **Features** : Réduction massive (souvent moins de 10 features sur 30).
+*   **Graphique** : `results/ex1_ga_convergence.png`
+
+---
+
+## 🧪 Exercice 2 : Hybridation AG + SA (Recuit Simulé)
 
 ---
 
@@ -88,7 +107,7 @@ python 7_main_experiment.py
 
 ---
 
-## 📈 Résultats obtenus
+## 📈 Résultats de l'Hybridation (Exercice 2)
 
 Les performances de l'algorithme hybride démontrent sa capacité à simplifier les modèles sans perte de qualité.
 
