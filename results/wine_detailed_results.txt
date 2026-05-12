@@ -1,0 +1,7 @@
+Results for wine
+Fitness: 0.6178
+Accuracy: 0.9815
+Reduction: 76.92%
+Features selected: 3/13
+Indices: [10, 11, 12]
+Time: 8.52s

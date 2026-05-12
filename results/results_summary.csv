@@ -1,0 +1,3 @@
+Dataset,Fitness,Accuracy,Features,Reduction (%),Time (s)
+wine,0.6178062678062678,0.9814814814814815,3/13,76.92307692307692,25.41316485405158
+    
