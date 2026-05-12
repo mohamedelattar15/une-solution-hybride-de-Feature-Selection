@@ -118,3 +118,15 @@ Ce graphique compare la Précision et le Taux de réduction pour les différents
 
 ## 📖 Pour aller plus loin
 Consultez le dossier **`guide and archetecture/`** pour lire l'explication complète de la formule mathématique de la fonction de fitness et le comportement de chaque opérateur génétique.
+
+---
+
+## 💡 Exercice 3 : Comparaison avec Py_FS et Améliorations
+
+Un script spécifique (`9_pyfs_experiment.py`) a été conçu pour comparer nos résultats avec le module `Py_FS`. Il teste des algorithmes comme **PSO** (Particle Swarm), **GWO** (Grey Wolf) et **WOA** (Whale).
+
+### Techniques proposées pour améliorer encore les résultats :
+1. **Changer de Classifieur** : Le SVM linéaire pourrait être remplacé par un algorithme d'ensemble comme le *Random Forest* ou *XGBoost* pour capturer des relations non-linéaires entre les features.
+2. **Validation Croisée (K-Fold)** : Au lieu d'une séparation stricte (Train/Test Split), utiliser `KFold(k=5)` garantirait que la précision est robuste et ne dépend pas d'un tirage chanceux.
+3. **Réglage des Hyperparamètres (GridSearch)** : Optimiser conjointement les hyperparamètres du SVM (le coût `C`) et la sélection des features.
+4. **Filtre hybride (Filter + Wrapper)** : Pour les très gros datasets (comme *Krvskp*), appliquer un simple test Chi-2 d'abord pour retirer 50% des features évidentes avant de lancer les métaheuristiques coûteuses en temps.
