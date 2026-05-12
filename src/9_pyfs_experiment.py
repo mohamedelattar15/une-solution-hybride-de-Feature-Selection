@@ -41,6 +41,10 @@ def safe_split(*args, **kwargs):
     kwargs['test_size'] = 0.3
     return original_split(*args, **kwargs)
 sklearn.model_selection.train_test_split = safe_split
+
+import matplotlib.pyplot as plt
+# Empêcher Py_FS d'ouvrir des fenêtres (plt.show) qui bloquent l'exécution (qui "dorment")
+plt.show = lambda *args, **kwargs: None
 # ------------------------
 
 # Import de la librairie Py_FS
@@ -146,6 +150,25 @@ def run_pyfs_experiments():
     plt.savefig(fig_path, dpi=300)
     plt.close()
     print(f"✅ Graphique comparatif sauvegardé dans: {fig_path}")
+
+    # ==========================================
+    # Graphique de convergence (Courbes)
+    # ==========================================
+    plt.figure(figsize=(10, 6))
+    plt.plot(sol_pso.convergence_curve['fitness'], label='PSO', color='#3b528b', linewidth=2)
+    plt.plot(sol_gwo.convergence_curve['fitness'], label='GWO', color='#21918c', linewidth=2)
+    plt.plot(sol_woa.convergence_curve['fitness'], label='WOA', color='#fde725', linewidth=2)
+    
+    plt.title('Courbes de Convergence de Py_FS', fontsize=14, pad=15)
+    plt.xlabel('Itérations', fontsize=12)
+    plt.ylabel('Fitness Moyen', fontsize=12)
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.7)
+    
+    conv_fig_path = '../results/comparaison_ex3_convergence.png'
+    plt.savefig(conv_fig_path, dpi=300)
+    plt.close()
+    print(f"✅ Courbes de convergence sauvegardées dans: {conv_fig_path}")
 
 if __name__ == "__main__":
     run_pyfs_experiments()
