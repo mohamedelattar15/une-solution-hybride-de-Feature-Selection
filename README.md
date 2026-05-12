@@ -88,8 +88,33 @@ python 7_main_experiment.py
 
 ---
 
-## 📈 Résultats obtenus (Exemple sur WINE)
-L'algorithme hybride parvient à sélectionner **uniquement 3 caractéristiques sur 13**, tout en atteignant une précision de classification de **98.15%**.
+## 📈 Résultats obtenus
+
+Les performances de l'algorithme hybride démontrent sa capacité à simplifier les modèles sans perte de qualité.
+
+### Tableau Récapitulatif (Exemple WINE)
+
+| Dataset | Fitness (Score) | Précision (Accuracy) | Features Sélectionnées | Réduction Dimensionnelle |
+|---------|-----------------|----------------------|------------------------|--------------------------|
+| **WINE**| `0.6178`        | **98.15%**           | **3 / 13** (Teinte, OD280/OD315, Proline) | **76.92%** |
+
+*(La classification est effectuée par un SVM après sélection des features).*
+
+### Visualisations
+
+#### 1. Convergence de l'Hybridation (WINE)
+Le graphique ci-dessous montre la progression du score d'évaluation : 
+- **À gauche** : L'Algorithme Génétique (AG) explore rapidement l'espace et trouve une bonne base.
+- **À droite** : Le Recuit Simulé (SA) prend le relais pour affiner et perfectionner la solution finale.
+
+![Convergence WINE](results/wine_convergence.png)
+
+#### 2. Comparaison des performances
+Ce graphique compare la Précision et le Taux de réduction pour les différents jeux de données testés.
+
+![Comparaison globale](results/results_comparison.png)
+
+---
 
 ## 📖 Pour aller plus loin
 Consultez le dossier **`guide and archetecture/`** pour lire l'explication complète de la formule mathématique de la fonction de fitness et le comportement de chaque opérateur génétique.
