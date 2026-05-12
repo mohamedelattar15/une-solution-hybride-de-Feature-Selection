@@ -16,6 +16,15 @@ def import_module_from_file(module_name, file_path):
 DataLoader = import_module_from_file("data_loading", "1_data_loading.py").DataLoader
 FitnessFunction = import_module_from_file("fitness_function", "2_fitness_function.py").FitnessFunction
 
+# --- PATCH POUR Py_FS ---
+# Py_FS essaie d'importer 'pkg_resources' qui a été supprimé des versions récentes de Python (setuptools>=70).
+# Comme nous n'utilisons pas les datasets internes de Py_FS, nous pouvons "simuler" ce module pour éviter le crash.
+import sys
+import types
+if 'pkg_resources' not in sys.modules:
+    sys.modules['pkg_resources'] = types.ModuleType('pkg_resources')
+# ------------------------
+
 # Import de la librairie Py_FS
 from Py_FS.wrapper.nature_inspired import PSO, GWO, WOA
 
